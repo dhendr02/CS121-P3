@@ -1,58 +1,50 @@
-public class AssertString extends Assertion {
-    private final String s;
+public class AssertString extends AssertObject {
 
-    public AssertString(String s) {
-        this.s = s;
+    private final String str;
+
+    public AssertString(String str) {
+        super(str);
+        this.str = str;
     }
 
     public AssertString isNotNull() {
-        if (s == null) {
-            throw new AssertionError("String is null");
-        }
+        super.isNotNull();
         return this;
     }
 
     public AssertString isNull() {
-        if (s != null) {
-            throw new AssertionError("String is not null");
-        }
+        super.isNull();
         return this;
     }
 
     public AssertString isEqualTo(Object o) {
-        if (!s.equals(o)) {
-            throw new AssertionError("String is not equal to " + o);
-        }
+        super.isEqualTo(o);
         return this;
     }
 
     public AssertString isNotEqualTo(Object o) {
-        if (s.equals(o)) {
-            throw new AssertionError("String is equal to " + o);
-        }
+        super.isNotEqualTo(o);
         return this;
     }
 
     public AssertString startsWith(String s2) {
-        if (!s.startsWith(s2)) {
-            throw new AssertionError("String does not start with " + s2);
+        if (!str.startsWith(s2)) {
+            throw new RuntimeException("String does not start with " + s2);
         }
         return this;
     }
 
     public AssertString isEmpty() {
-        if (!s.isEmpty()) {
-            throw new AssertionError("String is not empty");
+        if (!str.isEmpty()) {
+            throw new RuntimeException("String is not empty");
         }
         return this;
     }
 
     public AssertString contains(String s2) {
-        if (!s.contains(s2)) {
-            throw new AssertionError("String does not contain " + s2);
+        if (!str.contains(s2)) {
+            throw new RuntimeException("String does not contain " + s2);
         }
         return this;
     }
-
-
 }

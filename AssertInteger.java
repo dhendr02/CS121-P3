@@ -1,34 +1,28 @@
-public class AssertInteger extends Assertion {
-    private final Integer i;
+public class AssertInteger {
 
-    public AssertInteger(Integer i) {
-        this.i = i;
+    private final int value;
+
+    public AssertInteger(int value) {
+        this.value = value;
     }
 
-    public AssertInteger isNotNull() {
-        if (i == null) {
-            throw new AssertionError("Integer is null");
+    public AssertInteger isEqualTo(int i2) {
+        if (value != i2) {
+            throw new RuntimeException("Integer is not equal to " + i2);
         }
         return this;
     }
 
-    public AssertInteger isEqualTo(Integer i2) {
-        if (!i.equals(i2)) {
-            throw new AssertionError("Integer is not equal to " + i2);
+    public AssertInteger isLessThan(int i2) {
+        if (value >= i2) {
+            throw new RuntimeException("Integer is not less than " + i2);
         }
         return this;
     }
 
-    public AssertInteger isLessThan(Integer i2) {
-        if (i >= i2) {
-            throw new AssertionError("Integer is not less than " + i2);
-        }
-        return this;
-    }
-
-    public AssertInteger isGreaterThan(Integer i2) {
-        if (i <= i2) {
-            throw new AssertionError("Integer is not greater than " + i2);
+    public AssertInteger isGreaterThan(int i2) {
+        if (value <= i2) {
+            throw new RuntimeException("Integer is not greater than " + i2);
         }
         return this;
     }

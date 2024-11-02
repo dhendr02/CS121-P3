@@ -1,34 +1,28 @@
-public class AssertBoolean extends Assertion {
-    private final Boolean b;
+public class AssertBoolean {
 
-    public AssertBoolean(Boolean b) {
-        this.b = b;
+    private final boolean value;
+
+    public AssertBoolean(boolean value) {
+        this.value = value;
     }
 
-    public AssertBoolean isNotNull() {
-        if (b == null) {
-            throw new AssertionError("Boolean is null");
-        }
-        return this;
-    }
-
-    public AssertBoolean isEqualTo(Boolean b) {
-        if (!this.equals(b)) {
-            throw new AssertionError("Boolean is not equal to " + b);
+    public AssertBoolean isEqualTo(boolean b2) {
+        if (value != b2) {
+            throw new RuntimeException("Boolean is not equal to " + b2);
         }
         return this;
     }
 
     public AssertBoolean isTrue() {
-        if (!b) {
-            throw new AssertionError("Boolean is false");
+        if (!value) {
+            throw new RuntimeException("Boolean is not true");
         }
         return this;
     }
 
     public AssertBoolean isFalse() {
-        if (b) {
-            throw new AssertionError("Boolean is true");
+        if (value) {
+            throw new RuntimeException("Boolean is not false");
         }
         return this;
     }
